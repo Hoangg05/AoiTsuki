@@ -42,7 +42,25 @@ export default class MyDocument extends Document {
 						rel='stylesheet'
 					/>
 					<meta name='description' content='IDK :>?' />
-					<link rel='icon' href='/logo.jpg' />
+					<link
+						rel='icon'
+						sizes='192x192'
+						href='/logo.jpg'
+						type='image/png'
+					/>
+					<meta name='description' content="Aoi Tsuki's website" />
+					<meta property='og:title' content="Aoi Tsuki's website" />
+					<meta
+						property='og:description'
+						content="Aoi Tsuki's website"
+					/>
+					<meta property='og:image' content='/logo.jpg' />
+					<meta
+						property='og:url'
+						content='https://aoitsuki.vercel.app'
+					/>
+					<meta property='og:type' content='website' />
+					<meta property='og:site_name' content='Aoi Tsuki' />
 				</Head>
 				<body>
 					<Main />

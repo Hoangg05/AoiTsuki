@@ -5,7 +5,7 @@ const LoadingUI: NextPage = () => {
 	return (
 		<LoadingStyles.Main>
 			<Head>
-				<title>Loading | Aoi Tsuki</title>
+				<title>Aoi Tsuki</title>
 			</Head>
 			<LoadingStyles.Loader />
 		</LoadingStyles.Main>
