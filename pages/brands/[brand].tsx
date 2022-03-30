@@ -1,7 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { Config } from "store/slices/seo.slice";
 
 const brands = [
 	{
@@ -40,7 +42,15 @@ export async function getStaticProps({ params }: any): Promise<any> {
 	};
 }
 
-function BrandPreview({ brandItem, brand }: any) {
+function BrandPreview(props: any) {
+	const { brandItem, brand, Config } = props;
+	const [set, isSet] = useState<boolean>(false);
+	useEffect(() => {
+		if (!set) {
+			Config(brandItem);
+			isSet(true);
+		}
+	}, [Config, brandItem, set]);
 	const myLoader = ({ src }: { src: string }) => {
 		if (!brandItem) return "/logo.jpg";
 		return brandItem.image;
@@ -91,4 +101,10 @@ function BrandPreview({ brandItem, brand }: any) {
 	);
 }
 
-export default BrandPreview;
+const mapStateToProps = (state: any) => ({});
+
+const mapDispatchToProps = {
+	Config
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BrandPreview);
