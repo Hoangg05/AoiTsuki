@@ -1,6 +1,5 @@
 import IntroStyles from "components/Styles/Intro/index.styled";
 import { AnimatePresence } from "framer-motion";
-import { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { Fragment, useEffect, useState } from "react";
@@ -81,7 +80,7 @@ const textVariants = {
 	}
 };
 
-const IntroUI: NextPage = () => {
+function IntroUI({ setIntro }: any) {
 	const [lang, setLang] = useState<any>(null);
 	const [spinDone, setSpinDone] = useState<boolean>(false);
 	const [doneAnimation, setDoneAnimation] = useState<boolean>(false);
@@ -93,6 +92,17 @@ const IntroUI: NextPage = () => {
 			setLang(translations[language].intro);
 		}
 	}, [language, translations]);
+	useEffect(() => {
+		const timeOut: any = () => {
+			if (doneAnimation) {
+				setIntro(false);
+			}
+		};
+		setTimeout(timeOut, 5000);
+		return () => {
+			clearTimeout(timeOut);
+		};
+	}, [doneAnimation, setIntro]);
 	if (!lang) return <LoadingUI />;
 	return (
 		<IntroStyles.Main>
@@ -140,8 +150,11 @@ const IntroUI: NextPage = () => {
 					</Fragment>
 				)}
 			</AnimatePresence>
+			<IntroStyles.Skip onClick={() => setIntro(false)}>
+				Skip{"->"}
+			</IntroStyles.Skip>
 		</IntroStyles.Main>
 	);
-};
+}
 
 export default IntroUI;

@@ -39,11 +39,26 @@ const Title = styled(motion.h2)`
 	z-index: 1;
 `;
 
+const Skip = styled.h2`
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	font-size: 1.5rem;
+	font-weight: bold;
+	font-style: italic;
+	text-decoration: underline;
+	cursor: pointer;
+	color: blue;
+	font-family: "Cascadia Code", "Operator Mono Lig", "Dank Mono",
+		"Inconsolata", "Courier New", monospace;
+`;
+
 const IntroStyles = {
 	Main,
 	BlockBall,
 	Ball,
-	Title
+	Title,
+	Skip
 };
 
 export default IntroStyles;

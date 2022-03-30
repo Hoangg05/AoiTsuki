@@ -20,18 +20,11 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 	const [loading, setLoading] = useState<boolean>(true);
 	const [intro, setIntro] = useState<boolean>(true);
 	useEffect(() => {
-		const timeOut: any = (): void => {
-			setIntro(false);
-		};
-		setTimeout(timeOut, 20000);
 		if (!intro) {
 			setLoading(false);
 		}
-		return () => {
-			clearTimeout(timeOut);
-		};
 	}, [intro]);
-	if (intro) return <IntroUI />;
+	if (intro) return <IntroUI setIntro={setIntro} />;
 	return (
 		<Provider store={store}>
 			<AnimatePresence exitBeforeEnter>

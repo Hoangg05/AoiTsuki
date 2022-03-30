@@ -1,22 +1,17 @@
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { Fragment } from "react";
 const brands = [
 	{
-		name: "Nike",
-		image: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTNoD9oT_VnEYNKKeOor8U4qK5T1LF4bC2iRDD75fQdveQMHTUA",
+		name: "Thất Nguyệt",
+		image: "https://scontent.xx.fbcdn.net/v/t1.15752-9/276984487_312201110841010_2174806510696609215_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=aee45a&_nc_ohc=kFjhCZtvMsoAX_35cSJ&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AVLDQj9lSqeHsNOthcxwVq-nrv2U1-wzC8fYg_IwTOk-tg&oe=626ADA1B",
 		description:
-			"Nike is a multinational corporation headquartered in Oak Park, Illinois, United States. It is the world's largest sports brand, with revenues in excess of $1.3 billion. The company was founded in 1971 by Michael Jordan and Bill Belichick, and is headquartered in Oak Park, Illinois.",
+			"Một thương hiệu đến từ Trung Quốc, với chất lượng vải mềm mịn, cầm nặng tay cùng với màu sắc trẻ trung và năng động, Thất Nguyệt được nhiều giới trẻ yêu thích và tin dùng.",
 		url: "https://www.nike.com/",
-		models: [
-			"Giày dép",
-			"Quần áo",
-			"Phụ kiện",
-			"Trang thiết bị",
-			"Dịch vụ liên quan đến thể thao"
-		],
-		location: "gần Beaverton, Oregon, tại khu vực đô thị Portland"
+		models: ["Quần áo", "Phụ kiện"],
+		location: null
 	}
 ];
 
@@ -26,6 +21,10 @@ function BrandPreview() {
 	const brandItem = brands.find(
 		(item: any) => item.name.toLowerCase() === brand
 	);
+	const myLoader = ({ src }: { src: string }) => {
+		if (!brandItem) return "/logo.jpg";
+		return brandItem.image;
+	};
 	return (
 		<Fragment>
 			{brandItem && (
@@ -51,8 +50,12 @@ function BrandPreview() {
 			)}
 			<div>
 				{brandItem && (
-					<div>
-						<img
+					<div style={{ position: "relative", minHeight: "100vh" }}>
+						<Image
+							priority
+							unoptimized={true}
+							layout='fill'
+							loader={myLoader}
 							src={brandItem.image}
 							alt={brandItem.name}
 							draggable='false'
