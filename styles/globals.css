@@ -1,16 +1,83 @@
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	padding: 0;
+	margin: 0;
+	background: #e1e1e1;
+}
+
+body {
+	width: 100%;
+	min-height: 100vh;
+	position: relative;
+}
+
+#__next {
+	width: 100%;
+	height: 100%;
+	position: relative;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+	outline: none;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: Helvetica Neue, Helvetica, Arial, 文泉驛正黑, WenQuanYi Zen Hei,
+		Hiragino Sans GB, 儷黑 Pro, LiHei Pro, Heiti TC, 微軟正黑體,
+		Microsoft JhengHei UI, Microsoft JhengHei, sans-serif;
+	font-weight: 500;
+}
+
+.slide {
+	border-radius: 5px;
+	background: white;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.Indicators {
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+}
+
+.Indicator-container {
+	width: 20px;
+	height: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	margin: 0 10px;
+}
+
+.Indicator {
+	width: 100%;
+	height: 100%;
+	display: grid;
+	place-items: center;
+	background: #fcfcfc;
+	border-radius: 5px;
+	position: relative;
+}
+
+.Indicator-highlight {
+	color: #fff;
+	top: 0;
+	left: 0;
+	background: #09f;
+	border-radius: 5px;
+	width: 100%;
+	height: 100%;
+	display: grid;
+	place-items: center;
+	position: absolute;
 }
