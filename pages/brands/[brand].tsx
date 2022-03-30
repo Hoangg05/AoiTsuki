@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React, { Fragment } from "react";
+
 const brands = [
 	{
 		name: "Thất Nguyệt",
@@ -15,12 +15,32 @@ const brands = [
 	}
 ];
 
-function BrandPreview() {
-	const router = useRouter();
-	const { brand }: any = router.query;
+export async function getStaticPaths() {
+	const paths = brands.map((brand) => ({
+		params: {
+			brand: brand.name.toLowerCase()
+		}
+	}));
+	return {
+		paths,
+		fallback: true
+	};
+}
+
+export async function getStaticProps({ params }: any): Promise<any> {
+	const { brand } = params;
 	const brandItem = brands.find(
 		(item: any) => item.name.toLowerCase() === brand
 	);
+	return {
+		props: {
+			brandItem,
+			brand
+		}
+	};
+}
+
+function BrandPreview({ brandItem, brand }: any) {
 	const myLoader = ({ src }: { src: string }) => {
 		if (!brandItem) return "/logo.jpg";
 		return brandItem.image;
