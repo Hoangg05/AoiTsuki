@@ -16,16 +16,18 @@ const Home: NextPage = (props: any) => {
 	}, [language, translations]);
 	return (
 		<Fragment>
-			<Head>
-				<title>{lang.header.title}</title>
-				<meta name='description' content='IDK :>' />
-				<meta property='og:title' content="Aoi Tsuki's website" />
-				<meta property='og:description' content='IDK :>' />
-				<meta property='og:image' content='/logo.jpg' />
-				<meta property='og:url' content='https://aoitsuki.com' />
-				<meta property='og:type' content='website' />
-				<meta property='og:site_name' content='Aoi Tsuki' />
-			</Head>
+			{lang && (
+				<Head>
+					<title>{lang.header.title}</title>
+					<meta name='description' content='IDK :>' />
+					<meta property='og:title' content="Aoi Tsuki's website" />
+					<meta property='og:description' content='IDK :>' />
+					<meta property='og:image' content='/logo.jpg' />
+					<meta property='og:url' content='https://aoitsuki.com' />
+					<meta property='og:type' content='website' />
+					<meta property='og:site_name' content='Aoi Tsuki' />
+				</Head>
+			)}
 			<HomeMainUI />
 		</Fragment>
 	);
